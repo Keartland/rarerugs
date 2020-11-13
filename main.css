@@ -1,5 +1,9 @@
+:root {
+  --bg: #cfc0ab;
+}
+
 body {
-    background:#cfc0ab;
+    background:var(--bg);
 }
 
 .footer {
@@ -49,4 +53,11 @@ ul li:before {
     position: absolute;
     /*change margin to move dash around*/
     margin-left: -1em;
+}
+
+.newlocation{
+    font-size: 30px;
+    color:var(--bg);
+    text-decoration: none;
+
 }
