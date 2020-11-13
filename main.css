@@ -4,7 +4,6 @@
 
 body {
     background:var(--bg);
-
     overflow:hidden;
 }
 
@@ -14,7 +13,6 @@ body {
 }
 
 .spin img {
-
     border-radius: 50%;
     -webkit-transition: -webkit-transform 1.5s;
     transition: transform 1.5s;
@@ -24,6 +22,12 @@ body {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
 }
+
+.socials a{
+    display:inline-block;
+    width:60px;
+}
+
 .socials img {
     border-radius: 50%;
     -webkit-transition: -webkit-transform 1.5s;
