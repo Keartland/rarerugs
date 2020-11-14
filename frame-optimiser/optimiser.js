@@ -41,23 +41,23 @@ function Draw(data,x,y,w,h, imagedata){
 function workOutBlocks(){
     var c = document.getElementById("sizer");
     var ctx = c.getContext("2d");
-    width = Number(document.getElementById("width").value)
-    height = Number(document.getElementById("height").value)
+    width = Number(document.getElementById("width").value) // width of the canvas cm
+    height = Number(document.getElementById("height").value) // height of the canvas cm
 
-    c.width = 1.75*800*(width/(width+height))
-    c.height = 1.75*800*(height/(width+height)) 
-    blocks = []
+    c.width = 1.75*800*(width/(width+height)) // scale it up so it takes up a whole page
+    c.height = 1.75*800*(height/(width+height)) //scale it up so it takes up a whole page
+    blocks = [] // create empty array all the blocks will go in
 
-    images = document.getElementById("images").children
-    for (i=0;i< images.length;i++){
-        actualImg = images[i].children[0]
-        curHeight = Number(images[i].children[1].children[1].value)
-        blocks.push({ w: curHeight*2*actualImg.width/(actualImg.width+actualImg.height)  , h: curHeight, data: actualImg.src})
+    images = document.getElementById("images").children // get all the images
+    for (i=0;i< images.length;i++){ // loop though all the images
+        actualImg = images[i].children[0] // get the actual image
+        curHeight = 800*1.75*Number(images[i].children[1].children[1].value)/(height+width) // get the height that the user wants the image to be and devide it by the scalar
+        blocks.push({ w: curHeight*2*actualImg.width/(actualImg.width+actualImg.height)  , h: curHeight, data: actualImg.src}) // set the block to 
     }
     console.log(blocks)
     blocks.sort((a,b) => (Math.max(a.w,a.h) > Math.max(b.w,b.h))? -1:1)
     margin = Number(document.getElementById("margin").value)
-    var packer = new Packer(c.width, c.height, margin);
+    var packer = new Packer(c.width, c.height, 1.75*800*margin/(width+height));
     packer.fit(blocks);
     for(var n = 0 ; n < blocks.length ; n++) {
         var block = blocks[n];
